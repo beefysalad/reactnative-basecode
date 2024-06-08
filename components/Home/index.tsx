@@ -1,14 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import SafeAreaWrapper from "../shared/SafeAreaWrapper";
 import CustomButton from "../shared/CustomButton";
 import { useRouter } from "expo-router";
-import { SIZE } from "@/constants";
+import { SIZE, STYLE } from "@/constants";
 import CustomText from "../shared/CustomText";
+import CustomModal from "../shared/Modal";
 
 export default function Home() {
   const [timeString, setTimeString] = useState<string>("");
-
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [modalText, setModalText] = useState<string>("");
   const getCurrentTime = () => {
     const date = new Date();
     let hour = date.getHours();
@@ -25,7 +33,7 @@ export default function Home() {
       minute
     ).padStart(2, "0")}:${String(second).padStart(2, "0")} ${ampm}`;
     setTimeString(dateString);
-    console.log(timeString);
+    return dateString;
   };
 
   useEffect(() => {
@@ -33,20 +41,39 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleTimeAction = (actionType: string) => {
+    const currentTime = getCurrentTime();
+    const modalString =
+      actionType === "timeIn"
+        ? `Hello John Patrick Ryan Mandal! You are clocking in at ${currentTime}`
+        : `Hello John Patrick Ryan Mandal! You are clocking out at ${currentTime}. Thanks for coming to work today!`;
+
+    setModalText(modalString);
+    setModalVisible(true);
+  };
+
   return (
     <SafeAreaWrapper>
-      <View style={styles.container}>
+      <View style={STYLE.container}>
         <CustomText size={SIZE.LG}>{timeString}</CustomText>
+        <CustomButton
+          title='Time in'
+          onPress={() => handleTimeAction("timeIn")}
+        />
+        <CustomButton
+          title='Time out'
+          onPress={() => handleTimeAction("timeOut")}
+        />
       </View>
+
+      <CustomModal modalClose={closeModal} modalVisibility={modalVisible}>
+        <Text>{modalText}</Text>
+        <CustomButton title='Close' onPress={closeModal} />
+      </CustomModal>
     </SafeAreaWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 25,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: COLORS.BUTTON,
-    width: 250,
+    width: 200,
     height: 45,
     borderRadius: 5,
+    marginBottom: 5,
   },
   buttonText: {
     color: COLORS.WHITE,

@@ -1,4 +1,5 @@
 // constants.ts
+import { StyleSheet } from "react-native";
 
 export const COLORS = {
   PRIMARY: "#3498db",
@@ -20,3 +21,12 @@ export const SIZE = {
   XL: 32,
   XXL: 64,
 };
+
+export const STYLE = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 25,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
