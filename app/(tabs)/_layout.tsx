@@ -21,12 +21,22 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='todo'
+        name='timelogs'
         options={{
-          tabBarLabel: "To do",
+          tabBarLabel: "Time Log",
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome name='tasks' size={25} color={color} />
+            <FontAwesome name='th-list' size={25} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='api'
+        options={{
+          tabBarLabel: "Movie API",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name='search' size={25} color={color} />
           ),
         }}
       />

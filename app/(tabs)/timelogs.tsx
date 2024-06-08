@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Todo from "@/components/Todo";
+import Timelog from "@/components/Timelogs";
 
-export default function Todos() {
-  return <Todo />;
+export default function timelogs() {
+  return <Timelog />;
 }
 
 const styles = StyleSheet.create({});
