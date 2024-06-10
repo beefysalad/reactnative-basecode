@@ -40,6 +40,16 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name='clear'
+        options={{
+          tabBarLabel: "DEV",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name='code' size={25} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

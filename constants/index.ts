@@ -22,11 +22,26 @@ export const SIZE = {
   XXL: 64,
 };
 
+export const PLATFORM = {
+  ANDROID: "android",
+  IOS: "ios",
+  WEB: "web",
+  MACOS: "macos",
+  WINDOWS: "windows",
+};
 export const STYLE = StyleSheet.create({
   container: {
     flex: 1,
     padding: 25,
     justifyContent: "center",
     alignItems: "center",
+  },
+  input: {
+    height: 40,
+    width: 250,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingHorizontal: 10,
   },
 });
