@@ -12,11 +12,14 @@ import { useRouter } from "expo-router";
 import { SIZE, STYLE } from "@/constants";
 import CustomText from "../shared/CustomText";
 import CustomModal from "../shared/Modal";
+import { useStore } from "@/store/store";
 
 export default function Home() {
   const [timeString, setTimeString] = useState<string>("");
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [modalText, setModalText] = useState<string>("");
+  const { count, decrement, increment } = useStore();
+
   const getCurrentTime = () => {
     const date = new Date();
     let hour = date.getHours();
@@ -68,6 +71,8 @@ export default function Home() {
           title='Time out'
           onPress={() => handleTimeAction("timeOut")}
         />
+        <CustomText size={SIZE.MD}>{count}</CustomText>
+        <CustomButton title='Increment' onPress={increment} />
       </View>
 
       <CustomModal modalClose={closeModal} modalVisibility={modalVisible}>
