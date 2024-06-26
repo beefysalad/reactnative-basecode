@@ -17,6 +17,7 @@ import CustomText from "../shared/CustomText";
 import CustomModal from "../shared/Modal";
 import { useStore } from "@/store/store";
 import { formatDate } from "@/helpers/dateFormatter";
+import { ping } from "@/service/api";
 
 export default function Home() {
   const [timeString, setTimeString] = useState<string>("");
@@ -105,7 +106,15 @@ export default function Home() {
   const handleOnBlur = () => {
     Keyboard.dismiss();
   };
-
+  const handleApiRequest = async () => {
+    try {
+      console.log("clicked");
+      const response = await ping();
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <SafeAreaWrapper>
       <View style={STYLE.container}>
@@ -119,6 +128,7 @@ export default function Home() {
           numberOfLines={1}
         />
         <CustomButton title='Submit' onPress={handleSubmit} />
+        <CustomButton title='API' onPress={handleApiRequest} />
       </View>
 
       <CustomModal modalClose={closeModal} modalVisibility={modalVisible}>
