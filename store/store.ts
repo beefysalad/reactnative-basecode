@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist, PersistOptions } from "zustand/middleware";
+import { createJSONStorage, persist, PersistOptions } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ILogs, IUser, Users } from "@/test-data/users";
 interface State {
@@ -52,7 +52,7 @@ export const useStore = createStore(
     }),
     {
       name: "tracker-app",
-      getStorage: () => AsyncStorage,
+      storage: createJSONStorage(() => AsyncStorage),
     } as PersistOptions<State>
   )
 );
