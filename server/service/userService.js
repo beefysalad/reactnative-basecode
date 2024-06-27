@@ -1,4 +1,4 @@
-const { User } = require('../models/User');
+const { User } = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { getUserToken } = require("../helpers/authHelper");
 
@@ -49,7 +49,7 @@ const login = async (req, res) => {
         },
       });
     }
-    return res.status(404).json({
+    return res.status(417).json({
       message: "Invalid credentials!",
     });
   } catch (error) {

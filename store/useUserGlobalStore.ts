@@ -3,15 +3,27 @@ import { createJSONStorage, persist, PersistOptions } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface State {
-  user: IUser | null;
+  user: IAuthenticatedUser | null;
+  updateUser: (user: IAuthenticatedUser | null) => void;
+  signOut: () => void;
 }
 
 const createStore = create<State>();
 
-export const useStore = createStore(
+export const useUserGlobalStore = createStore(
   persist(
     (set, get) => ({
       user: null,
+      updateUser: (user) => {
+        set({
+          user: user,
+        });
+      },
+      signOut: () => {
+        set({
+          user: null,
+        });
+      },
     }),
     {
       name: "tracker-application-user-store",

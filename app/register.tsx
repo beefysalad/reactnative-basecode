@@ -1,6 +1,6 @@
 import CustomButton from "@/components/shared/CustomButton";
 import { PLATFORM } from "@/constants";
-import { loginUser } from "@/service/api";
+import { registerUser } from "@/service/api";
 import { useUserGlobalStore } from "@/store/useUserGlobalStore";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -9,30 +9,20 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity,
   Platform,
   Alert,
 } from "react-native";
 
-export default function Login() {
+export default function Register() {
+  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { updateUser } = useUserGlobalStore();
   const router = useRouter();
-  const handleLogin = async () => {
-    const isMissingFields = email === "" || password === "";
-
-    if (isMissingFields) {
-      const alertMessage = "Missing required fields";
-      const platformAlert = Platform.OS === PLATFORM.WEB ? alert : Alert.alert;
-      platformAlert(alertMessage);
-      return;
-    }
+  const handleRegister = async () => {
     try {
-      const user = await loginUser({ email, password });
+      const user = await registerUser({ name, email, password });
       if (user) {
-        updateUser(user);
-        router.replace("/");
+        router.navigate("/login");
       }
     } catch (error: any) {
       if (error.response) {
@@ -45,12 +35,18 @@ export default function Login() {
       console.error(error);
     }
   };
-  const navigateRegister = async () => {
-    router.navigate("/register");
-  };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome Back</Text>
+      <Text style={styles.title}>Register</Text>
+      <TextInput
+        style={styles.input}
+        placeholder='Name'
+        placeholderTextColor='#aaa'
+        keyboardType='ascii-capable'
+        autoCapitalize='none'
+        value={name}
+        onChangeText={setName}
+      />
       <TextInput
         style={styles.input}
         placeholder='Email'
@@ -68,8 +64,7 @@ export default function Login() {
         value={password}
         onChangeText={setPassword}
       />
-      <CustomButton title='Login' onPress={handleLogin} />
-      <CustomButton title='Register' onPress={navigateRegister} />
+      <CustomButton title='Register' onPress={handleRegister} />
     </View>
   );
 }

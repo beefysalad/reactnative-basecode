@@ -1,12 +1,24 @@
-import { COLORS } from "@/constants";
+import Home from "@/components/Home";
+import { COLORS, PLATFORM } from "@/constants";
 import { FontAwesome } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 import React from "react";
+import { Platform } from "react-native";
 export default function TabLayout() {
-  return (
+  return Platform.OS === PLATFORM.WEB ? (
+    <Stack>
+      <Stack.Screen
+        name='index'
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen name='timelogs' options={{ headerShown: false }} />
+    </Stack>
+  ) : (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: COLORS.ACTIVE_TAB, 
+        tabBarActiveTintColor: COLORS.ACTIVE_TAB,
         tabBarInactiveTintColor: COLORS.INACTIVE_TAB,
       }}
     >
