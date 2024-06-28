@@ -21,7 +21,11 @@ export const SIZE = {
   XL: 32,
   XXL: 64,
 };
-
+export const MENU = {
+  SIGN_OUT: "sign-out",
+  SETTING: "setting",
+  PROFILE: "profile",
+};
 export const PLATFORM = {
   ANDROID: "android",
   IOS: "ios",

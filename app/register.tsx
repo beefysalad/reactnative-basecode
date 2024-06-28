@@ -19,6 +19,14 @@ export default function Register() {
   const [password, setPassword] = useState<string>("");
   const router = useRouter();
   const handleRegister = async () => {
+    const isMissingFields = name === "" || email === "" || password === "";
+
+    if (isMissingFields) {
+      const alertMessage = "Missing required fields";
+      const platformAlert = Platform.OS === PLATFORM.WEB ? alert : Alert.alert;
+      platformAlert(alertMessage);
+      return;
+    }
     try {
       const user = await registerUser({ name, email, password });
       if (user) {
@@ -34,6 +42,9 @@ export default function Register() {
       }
       console.error(error);
     }
+    setName("");
+    setEmail("");
+    setPassword("");
   };
   return (
     <View style={styles.container}>

@@ -32,6 +32,7 @@ export default function Login() {
       const user = await loginUser({ email, password });
       if (user) {
         updateUser(user);
+
         router.replace("/");
       }
     } catch (error: any) {
@@ -44,6 +45,8 @@ export default function Login() {
       }
       console.error(error);
     }
+    setEmail("");
+    setPassword("");
   };
   const navigateRegister = async () => {
     router.navigate("/register");

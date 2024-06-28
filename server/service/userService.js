@@ -2,6 +2,19 @@ const { User } = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { getUserToken } = require("../helpers/authHelper");
 
+const removeAllUser = async (req, res) => {
+  try {
+    const usersRemoved = await User.deleteMany({});
+    res.status(200).json({
+      message: `${usersRemoved.deletedCount} users removed successfully.`,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+
 const createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -61,4 +74,5 @@ const login = async (req, res) => {
 module.exports = {
   createUser,
   login,
+  removeAllUser,
 };

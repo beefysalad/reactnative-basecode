@@ -22,21 +22,8 @@ import { ping } from "@/service/api";
 import { useUserGlobalStore } from "@/store/useUserGlobalStore";
 
 export default function Home() {
- 
   const { user, signOut } = useUserGlobalStore();
   const router = useRouter();
-  const handleApiRequest = async () => {
-    try {
-      const response = await ping();
-      if (Platform.OS === PLATFORM.WEB) {
-        alert(response.data);
-      } else {
-        Alert.alert(response.data);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
   const handleNavigate = () => {
     router.navigate("/timelogs");
   };
@@ -44,12 +31,9 @@ export default function Home() {
     <SafeAreaWrapper>
       <View style={STYLE.container}>
         <CustomText size={SIZE.LG}>{user?.name}</CustomText>
-       
-        <CustomButton title='API' onPress={handleApiRequest} />
         <CustomButton title='Sign out' onPress={signOut} />
         <CustomButton title='Navigate to timelogs' onPress={handleNavigate} />
       </View>
-
     </SafeAreaWrapper>
   );
 }
