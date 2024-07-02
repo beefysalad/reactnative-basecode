@@ -7,8 +7,7 @@ const getAllTodos = async (req, res) => {
       user: req.user,
     });
     res.status(200).json({
-      message: req.user,
-      todo: todo,
+      data: todo,
     });
   } catch (error) {
     return res.status(400).json({
@@ -19,12 +18,13 @@ const getAllTodos = async (req, res) => {
 
 const createTodo = async (req, res) => {
   try {
-    const { name, date } = req.body;
+    const { name, date, description } = req.body;
     const { user } = req;
     const task = await Todo.create({
       date,
       name,
       user,
+      description,
     });
     return res.status(201).json({
       message: "Task created",
@@ -50,10 +50,10 @@ const deleteTodo = async (req, res) => {
     });
   }
 };
-const updateTask = async (req, res) => {
+const updateTodo = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, date, isEditable } = req.body;
+    const { name, date, isEditable, description } = req.body;
     const todo = await Todo.updateOne(
       {
         _id: id,
@@ -63,6 +63,7 @@ const updateTask = async (req, res) => {
           date,
           name,
           isEditable,
+          description,
         },
       }
     );
@@ -75,7 +76,7 @@ const updateTask = async (req, res) => {
     });
   }
 };
-const updateTaskStatus = async (req, res) => {
+const updateTodoStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { isCompleted } = req.body;
@@ -102,6 +103,6 @@ module.exports = {
   getAllTodos,
   createTodo,
   deleteTodo,
-  updateTask,
-  updateTaskStatus,
+  updateTodo,
+  updateTodoStatus,
 };

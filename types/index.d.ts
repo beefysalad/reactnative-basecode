@@ -9,5 +9,18 @@ interface ISignIn {
 }
 interface IAuthenticatedUser {
   email: string;
-  name:string
+  name: string;
+}
+interface ICreateTodo {
+  name: string;
+  description: string;
+  date: string;
+}
+interface ITodo {
+  _id: string;
+  name: string;
+  isCompleted: boolean;
+  description: string;
+  isEditable: boolean;
+  date: string;
 }

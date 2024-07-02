@@ -16,10 +16,10 @@ export default function TabLayout() {
         }}
       />
       <Stack.Screen
-        name='timelogs'
+        name='todo'
         options={{
           headerShown: true,
-          header: () => <CustomHeader title='Home' />,
+          header: () => <CustomHeader title='Todo' />,
         }}
       />
     </Stack>
@@ -37,6 +37,16 @@ export default function TabLayout() {
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <FontAwesome name='home' size={25} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='todo'
+        options={{
+          tabBarLabel: "Todo",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name='file-text' size={25} color={color} />
           ),
         }}
       />

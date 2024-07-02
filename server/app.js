@@ -9,8 +9,8 @@ const {
   getAllTodos,
   createTodo,
   deleteTodo,
-  updateTask,
-  updateTaskStatus,
+  updateTodo,
+  updateTodoStatus,
 } = require("./service/todoService");
 console.clear();
 
@@ -32,8 +32,8 @@ app.get("/user/dev/remove", removeAllUser);
 app.get("/todo/all", authMiddleware, getAllTodos);
 app.post("/todo/create", authMiddleware, createTodo);
 app.delete("/todo/delete/:id", authMiddleware, deleteTodo);
-app.patch("/todo/update/:id", authMiddleware, updateTask);
-app.patch("/todo/update-status/:id", authMiddleware, updateTaskStatus);
+app.patch("/todo/update/:id", authMiddleware, updateTodo);
+app.patch("/todo/update-status/:id", authMiddleware, updateTodoStatus);
 
 app.listen(port, () => {
   console.log(`Listening to port ${port}`);

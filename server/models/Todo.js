@@ -11,6 +11,10 @@ const todoSchema = new mongoose.Schema(
       required: false,
       default: false,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     isEditable: {
       type: Boolean,
       default: true,
