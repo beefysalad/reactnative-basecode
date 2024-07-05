@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Todo from "@/components/Todo";
 
-export default function Todos() {
-  return <Todo />;
+import TodoList from "@/components/Todolist";
+
+export default function todo() {
+  return <TodoList />;
 }
 
 const styles = StyleSheet.create({});

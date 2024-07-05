@@ -25,12 +25,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: COLORS.BUTTON,
-    width: 250,
+    width: 200,
+    // width: "100%",
     height: 45,
     borderRadius: 5,
+    marginBottom: 5,
   },
   buttonText: {
     color: COLORS.WHITE,
     textAlign: "center",
   },
+  
 });
