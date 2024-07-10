@@ -1,28 +1,33 @@
-import GlobalAuthContext from "@/context/AuthContext";
-import { useUserGlobalStore } from "@/store/useUserGlobalStore";
-import { Stack, useRouter } from "expo-router";
+import CustomHeader from "@/components/shared/Header";
+import GlobalAuthContext, { useAuth } from "@/context/AuthContext";
+
+import { Slot, Stack, useRouter, useSegments } from "expo-router";
 import { useEffect } from "react";
 
 import "react-native-reanimated";
 
+const Layout = () => {
+  return (
+    <Stack>
+      <Stack.Screen name='index' options={{ headerShown: false }} />
+      <Stack.Screen
+        name='(protected)'
+        options={{
+          headerShown: true,
+          header: () => <CustomHeader title='Home' />,
+        }}
+      />
+      <Stack.Screen name='text' />
+      <Stack.Screen name='admin' />
+      <Stack.Screen name='register' options={{ headerShown: false }} />
+      <Stack.Screen name='+not-found' />
+    </Stack>
+  );
+};
 export default function RootLayout() {
-  const { user } = useUserGlobalStore();
-  const router = useRouter();
-  useEffect(() => {
-    if (user) {
-      router.replace("/(tabs)");
-    } else {
-      router.replace("/login");
-    }
-  }, [user]);
   return (
     <GlobalAuthContext>
-      <Stack>
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen name='login' options={{ headerShown: false }} />
-        <Stack.Screen name='register' options={{ headerShown: false }} />
-        <Stack.Screen name='+not-found' />
-      </Stack>
+      <Layout />
     </GlobalAuthContext>
   );
 }

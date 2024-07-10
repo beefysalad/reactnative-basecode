@@ -1,15 +1,16 @@
 import CustomButton from "@/components/shared/CustomButton";
+
 import { PLATFORM } from "@/constants";
+
 import { loginUser } from "@/service/api";
 import { useUserGlobalStore } from "@/store/useUserGlobalStore";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
-  TouchableOpacity,
   Platform,
   Alert,
 } from "react-native";
@@ -17,8 +18,9 @@ import {
 export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { updateUser } = useUserGlobalStore();
+  const { updateUser, updateAuthState } = useUserGlobalStore();
   const router = useRouter();
+
   const handleLogin = async () => {
     const isMissingFields = email === "" || password === "";
 
@@ -32,8 +34,8 @@ export default function Login() {
       const user = await loginUser({ email, password });
       if (user) {
         updateUser(user);
-
-        router.replace("/");
+        updateAuthState({ authenticated: true });
+        router.replace("/(protected)");
       }
     } catch (error: any) {
       if (error.response) {
@@ -63,6 +65,7 @@ export default function Login() {
         value={email}
         onChangeText={setEmail}
       />
+
       <TextInput
         style={styles.input}
         placeholder='Password'

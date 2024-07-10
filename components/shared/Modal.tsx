@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   Modal,
   TouchableWithoutFeedback,
   StyleSheet,

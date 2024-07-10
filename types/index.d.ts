@@ -11,6 +11,9 @@ interface IAuthenticatedUser {
   email: string;
   name: string;
 }
+interface IAuthState {
+  authenticated: boolean;
+}
 interface ICreateTodo {
   name: string;
   description: string;

@@ -33,6 +33,10 @@ export const PLATFORM = {
   MACOS: "macos",
   WINDOWS: "windows",
 };
+export const ROUTES = {
+  PROTECTED_ROUTES: ["(protected)", "admin"],
+  ROUTES: ["index"],
+};
 export const STYLE = StyleSheet.create({
   container: {
     flex: 1,

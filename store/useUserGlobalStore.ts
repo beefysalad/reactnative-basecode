@@ -4,7 +4,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface State {
   user: IAuthenticatedUser | null;
+  authState: IAuthState | null;
   updateUser: (user: IAuthenticatedUser | null) => void;
+  updateAuthState: (authState: IAuthState | null) => void;
   signOut: () => void;
 }
 
@@ -22,6 +24,17 @@ export const useUserGlobalStore = createStore(
       signOut: () => {
         set({
           user: null,
+          authState: {
+            authenticated: false,
+          },
+        });
+      },
+      authState: null,
+      updateAuthState: () => {
+        set({
+          authState: {
+            authenticated: true,
+          },
         });
       },
     }),

@@ -30,7 +30,7 @@ export default function Register() {
     try {
       const user = await registerUser({ name, email, password });
       if (user) {
-        router.navigate("/login");
+        router.navigate("/");
       }
     } catch (error: any) {
       if (error.response) {
