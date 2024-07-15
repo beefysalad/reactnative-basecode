@@ -5,19 +5,20 @@ import { STYLE } from "@/constants";
 import SafeAreaWrapper from "@/components/shared/SafeAreaWrapper";
 import CustomButton from "@/components/shared/CustomButton";
 import { useRouter } from "expo-router";
-import { handleRouteNavigation } from "@/helpers/navigation";
 
 export default function index() {
   const { user } = useUserGlobalStore();
   const router = useRouter();
-
+  const handleRouteNavigation = () => {
+    router.replace("/home");
+  };
   return (
     <SafeAreaWrapper>
       <View style={STYLE.container}>
         <Text>Hello user {user?.name}</Text>
         <CustomButton
           title='Navigate'
-          onPress={() => handleRouteNavigation("home")}
+          onPress={() => handleRouteNavigation()}
         />
       </View>
     </SafeAreaWrapper>

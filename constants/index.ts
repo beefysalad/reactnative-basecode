@@ -34,8 +34,8 @@ export const PLATFORM = {
   WINDOWS: "windows",
 };
 export const ROUTES = {
-  PROTECTED_ROUTES: ["(protected)", "admin"],
-  ROUTES: ["index"],
+  PROTECTED_ROUTES: ["(protected)", "admin", "(test)"],
+  PUBLIC_ROUTES: ["register", "text"],
 };
 export const STYLE = StyleSheet.create({
   container: {
@@ -77,6 +77,11 @@ export const STYLE = StyleSheet.create({
   scrollViewContainer: {
     flex: 1,
     padding: 25,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingContainer: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },

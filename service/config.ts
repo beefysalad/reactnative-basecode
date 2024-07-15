@@ -3,7 +3,7 @@ import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 import { Platform } from "react-native";
 // export const BASE_URL = "http://192.168.1.11:3000/";
-export const BASE_URL = "http://192.168.1.6:3000/";
+export const BASE_URL = "http://192.168.1.17:3000/";
 const TIME_OUT = 30000;
 export const APP_TOKEN = "tracker-user-token";
 
