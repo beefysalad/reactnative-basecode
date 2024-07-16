@@ -27,7 +27,6 @@ const CustomHeader = ({ navigation, title }: any) => {
     if (menuItem === MENU.SIGN_OUT) {
       signOut();
     }
-    console.log(`Menu item pressed: ${menuItem}`);
     toggleMenu();
   };
 
@@ -93,11 +92,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#333",
+    color: COLORS.BRANDING_BLUE,
   },
   profileContainer: {
     flexDirection: "row",
     alignItems: "center",
+    color: "red",
   },
   profileImage: {
     width: 40,

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: COLORS.PRIMARY,
+    backgroundColor: COLORS.BRANDING_BLUE,
     borderRadius: 5,
     marginBottom: 5,
     cursor: Platform.OS === "web" ? "pointer" : "auto",

@@ -48,7 +48,7 @@ export default function Register() {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>Register an admin account</Text>
       <TextInput
         style={styles.input}
         placeholder='Name'

@@ -11,6 +11,8 @@ export const COLORS = {
   ACTIVE_TAB: "tomato",
   INACTIVE_TAB: "#95a5a6",
   BUTTON: "#e67e22",
+  BRANDING_BLUE: "#00A9E0",
+  BRANDING_YELLOW: "#FBE122",
 };
 
 export const SIZE = {

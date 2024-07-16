@@ -55,7 +55,7 @@ export default function Login() {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome Back</Text>
+      <Text style={styles.title}>Admin Portal</Text>
       <TextInput
         style={styles.input}
         placeholder='Email'
@@ -75,7 +75,7 @@ export default function Login() {
         onChangeText={setPassword}
       />
       <CustomButton title='Login' onPress={handleLogin} />
-      <CustomButton title='Register' onPress={navigateRegister} />
+      {/* <CustomButton title='Register' onPress={navigateRegister} /> */}
     </View>
   );
 }
